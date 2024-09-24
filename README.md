@@ -47,18 +47,12 @@ Contributions are welcome! If you would like to contribute to this project, plea
 4. Push to the branch (`git push origin feature/YourFeature`).
 5. Open a pull request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - Inspired by the need to easily save content from social media platforms.
-- Thanks to all contributors for their efforts in making this project better!
 
-## Contact
 
-For any questions or feedback, feel free to reach out to me at [your_email@example.com](mailto:your_email@example.com).
+For any questions or feedback, feel free to reach out to me at [flymax747474@gmail.com].
 
 ```
 
