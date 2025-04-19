@@ -2,9 +2,20 @@
   "manifest_version": 3,
   "name": "Instagram Reel Downloader",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
+    "*://*.instagram.com/*"
+  ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "new_background.js",
+    "type": "module"
   },
   "action": {
     "default_popup": "popup.html",
@@ -12,8 +23,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://www.instagram.com/*"],
-      "js": ["content.js"]
+      "matches": ["*://*.instagram.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
   ]
 }

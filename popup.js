@@ -1,16 +1,15 @@
-document.getElementById('download-btn').addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "getReelUrl" }, (response) => {
-            if (response.url) {
-                const a = document.createElement('a');
-                a.href = response.url;
-                a.download = 'reel.mp4'; // You can modify the filename as needed
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            } else {
-                alert("No Reel found!");
-            }
-        });
-    });
+document.getElementById('download-btn').addEventListener('click', async () => {
+    try {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        const response = await chrome.tabs.sendMessage(tab.id, { action: "downloadReel" });
+        
+        if (response && response.success) {
+            console.log("Download initiated successfully");
+        } else {
+            alert("No Reel found on this page!");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error: " + (error.message || "Failed to download reel"));
+    }
 });
